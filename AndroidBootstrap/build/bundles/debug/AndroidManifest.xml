@@ -1,0 +1,7 @@
+<!-- From: file:/Users/yokomakukeishin/Documents/Android/repository/LGTMCam/AndroidBootstrap/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.beardedhen.androidbootstrap">
+
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17"/>
+
+    <application/>
+
+</manifest>

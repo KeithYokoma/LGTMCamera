@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LGTMCam</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="button_take_pic">Take picture for LGTM</string>
+    <string name="button_select_pic">Select picture for LGTM</string>
+    <string name="button_list_pic">Show LGTM pictures</string>
+
+    <string name="label_title_pref_about">About this app</string>
+    <string name="label_title_pref_version">Version</string>
+    <string name="label_title_pref_license">License</string>
+    <string name="label_summary_pref_version">%1$s (%2$d)</string>
+    <string name="label_list_item_license">%1$s by %2$s</string>
+    <string name="label_list_sticky_header_license_apache">Licensed under Apache V2 License</string>
+    <string name="label_list_sticky_header_license_mit">Licensed under MIT License</string>
+    <string name="label_list_header_license">Many thanks to these OSS projects.</string>
+</resources>
