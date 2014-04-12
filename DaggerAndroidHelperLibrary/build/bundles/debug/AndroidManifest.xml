@@ -1,0 +1,6 @@
+<!-- From: file:/Users/yokomakukeishin/Documents/Android/repository/LGTMCam/DaggerAndroidHelperLibrary/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.anprosit.android.dagger">
+
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>
+
+    <application/>
+</manifest>

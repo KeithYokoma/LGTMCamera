@@ -1,5 +1,7 @@
 package jp.yokomark.lgtm.app.home.ui.helper.button;
 
+import com.anprosit.android.dagger.utils.ObjectGraphUtils;
+
 import javax.inject.Inject;
 
 import jp.mixi.compatibility.android.provider.MediaStoreCompat;
@@ -20,7 +22,7 @@ public class TakePictureEventHandler implements ViewClickEventHandler<MainActivi
 
     @Override
     public void handle(MainActivity activity) {
-        activity.getGraph().inject(this);
+        ObjectGraphUtils.getObjectGraph(activity).inject(this);
         String preparedUri = mCompat.invokeCameraCapture(activity, MainRequest.TAKE.getCode());
         mPicState.setPreparedUri(preparedUri);
     }

@@ -1,49 +1,63 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="jp.yokomark.lgtm.app.home.ui.MainActivity">
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/button_take_pic"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/container_menu"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="@string/button_take_pic"
-        android:onClick="onButtonClick"
-        bootstrapbutton:bb_type="default"
-        bootstrapbutton:bb_roundedCorners="true"
-        bootstrapbutton:bb_size="default"
-        bootstrapbutton:bb_icon_left="fa-camera"/>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"/>
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/button_select_pic"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="@string/button_select_pic"
-        android:onClick="onButtonClick"
-        bootstrapbutton:bb_type="default"
-        bootstrapbutton:bb_roundedCorners="true"
-        bootstrapbutton:bb_size="default"
-        bootstrapbutton:bb_icon_left="fa-picture-o"/>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="8dp"/>
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/button_show_pic"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="@string/button_list_pic"
-        android:onClick="onButtonClick"
-        bootstrapbutton:bb_type="default"
-        bootstrapbutton:bb_roundedCorners="true"
-        bootstrapbutton:bb_size="default"
-        bootstrapbutton:bb_icon_left="fa-list"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        tools:context="jp.yokomark.lgtm.app.home.ui.MainActivity">
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_take_pic"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/button_take_pic"
+            android:onClick="onButtonClick"
+            bootstrapbutton:bb_type="default"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_icon_left="fa-camera"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_select_pic"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/button_select_pic"
+            android:onClick="onButtonClick"
+            bootstrapbutton:bb_type="default"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_icon_left="fa-picture-o"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_show_pic"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/button_list_pic"
+            android:onClick="onButtonClick"
+            bootstrapbutton:bb_type="default"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_icon_left="fa-list"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:text="@string/label_copyright"
+        android:textSize="12sp"/>
+</RelativeLayout>

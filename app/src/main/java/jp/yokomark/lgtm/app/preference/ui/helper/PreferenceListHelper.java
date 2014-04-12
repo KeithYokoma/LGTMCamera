@@ -7,6 +7,9 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import com.amalgam.content.pm.PackageManagerUtils;
+import com.anprosit.android.dagger.annotation.ForActivity;
+
+import javax.inject.Inject;
 
 import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.preference.ui.LicenseListActivity;
@@ -20,7 +23,8 @@ import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 public class PreferenceListHelper extends AbstractActivityHelper {
     public static final String TAG = PreferenceListHelper.class.getSimpleName();
 
-    PreferenceListHelper(Context context) {
+    @Inject
+    PreferenceListHelper(@ForActivity Context context) {
         super(context);
     }
 

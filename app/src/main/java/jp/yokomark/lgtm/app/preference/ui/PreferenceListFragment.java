@@ -1,11 +1,11 @@
 package jp.yokomark.lgtm.app.preference.ui;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
+
+import com.anprosit.android.dagger.ui.DaggerPreferenceFragment;
 
 import javax.inject.Inject;
 
-import dagger.ObjectGraph;
 import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.preference.ui.helper.PreferenceListHelper;
 
@@ -14,7 +14,7 @@ import jp.yokomark.lgtm.app.preference.ui.helper.PreferenceListHelper;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class PreferenceListFragment extends PreferenceFragment {
+public class PreferenceListFragment extends DaggerPreferenceFragment {
     public static final String TAG = PreferenceListFragment.class.getSimpleName();
     @Inject PreferenceListHelper mHelper;
 
@@ -22,8 +22,6 @@ public class PreferenceListFragment extends PreferenceFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         addPreferencesFromResource(R.xml.preference_list);
-        ObjectGraph graph = ((PreferenceActivity) getActivity()).getGraph();
-        graph.inject(this);
         mHelper.setUpVersionView(this);
         mHelper.setUpLicenseView(this);
     }

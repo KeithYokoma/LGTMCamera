@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.anprosit.android.dagger.annotation.ForActivity;
+
+import javax.inject.Inject;
+
 import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.preference.entity.LicenseEntry;
 import jp.yokomark.lgtm.app.preference.ui.LicenseListAdapter;
@@ -20,7 +24,8 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 public class LicenseListHelper extends AbstractActivityHelper implements AdapterView.OnItemClickListener {
     public static final String TAG = LicenseListHelper.class.getSimpleName();
 
-    LicenseListHelper(Context context) {
+    @Inject
+    LicenseListHelper(@ForActivity Context context) {
         super(context);
     }
 

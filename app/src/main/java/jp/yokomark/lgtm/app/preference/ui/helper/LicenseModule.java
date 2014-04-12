@@ -2,6 +2,8 @@ package jp.yokomark.lgtm.app.preference.ui.helper;
 
 import android.content.Context;
 
+import com.anprosit.android.dagger.annotation.ForActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,20 +16,18 @@ import jp.yokomark.lgtm.app.preference.ui.LicenseListFragment;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Module(injects = {
-        LicenseListActivity.class,
-        LicenseListFragment.class,
-})
+@Module(
+        injects = {
+                LicenseListActivity.class,
+                LicenseListFragment.class
+        },
+        complete = false,
+        library = true
+)
 public class LicenseModule {
-    Context mContext;
-
-    public LicenseModule(Context context) {
-        mContext = context;
-    }
-
     @Provides
     @Singleton
-    public LicenseListHelper provideLicenseListHelper() {
-        return new LicenseListHelper(mContext);
+    public LicenseListHelper provideLicenseListHelper(@ForActivity Context context) {
+        return new LicenseListHelper(context);
     }
 }

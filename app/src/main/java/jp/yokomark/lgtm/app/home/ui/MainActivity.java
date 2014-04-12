@@ -1,15 +1,19 @@
 package jp.yokomark.lgtm.app.home.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.anprosit.android.dagger.ActivityModule;
+import com.anprosit.android.dagger.ui.DaggerActivity;
+
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
-import dagger.ObjectGraph;
 import jp.mixi.compatibility.android.provider.MediaStoreCompat;
 import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.home.model.TakePicState;
@@ -24,18 +28,20 @@ import jp.yokomark.lgtm.app.home.ui.helper.result.MainRequest;
  * @since 1.0.0
  * @version 1.0.0
  */
-public class MainActivity extends Activity {
+public class MainActivity extends DaggerActivity {
     @Inject MainActivityHelper mHelper;
     @Inject MediaStoreCompat mCompat;
     @Inject TakePicState mPicState;
-    private ObjectGraph mGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mGraph = ObjectGraph.create(new MainActivityModule(this));
-        mGraph.inject(this);
+    }
+
+    @Override
+    protected List<Object> getModules() {
+        return Arrays.asList(new ActivityModule(this), new MainActivityModule());
     }
 
     @Override
@@ -72,9 +78,5 @@ public class MainActivity extends Activity {
     public void onButtonClick(View view) {
         MainViewClickEvent event = MainViewClickEvent.valueOf(view);
         event.getHandler().handle(this);
-    }
-
-    public ObjectGraph getGraph() {
-        return mGraph;
     }
 }

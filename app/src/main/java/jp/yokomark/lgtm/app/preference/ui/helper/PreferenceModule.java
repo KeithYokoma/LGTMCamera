@@ -2,6 +2,8 @@ package jp.yokomark.lgtm.app.preference.ui.helper;
 
 import android.content.Context;
 
+import com.anprosit.android.dagger.annotation.ForActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,20 +16,18 @@ import jp.yokomark.lgtm.app.preference.ui.PreferenceListFragment;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Module( injects = {
-        PreferenceActivity.class,
-        PreferenceListFragment.class
-})
+@Module(
+        injects = {
+                PreferenceActivity.class,
+                PreferenceListFragment.class
+        },
+        complete = false,
+        library = true
+)
 public class PreferenceModule {
-    Context mContext;
-
-    public PreferenceModule(Context context) {
-        mContext = context;
-    }
-
     @Provides
     @Singleton
-    public PreferenceListHelper providePreferenceListHelper() {
-        return new PreferenceListHelper(mContext);
+    public PreferenceListHelper providePreferenceListHelper(@ForActivity Context context) {
+        return new PreferenceListHelper(context);
     }
 }

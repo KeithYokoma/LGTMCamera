@@ -3,6 +3,7 @@ package jp.yokomark.lgtm.app.home.ui.helper;
 import android.content.Context;
 
 import com.amalgam.os.HandlerUtils;
+import com.anprosit.android.dagger.annotation.ForActivity;
 
 import javax.inject.Singleton;
 
@@ -23,32 +24,29 @@ import jp.yokomark.lgtm.app.home.ui.helper.result.UnknownResultHandler;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Module( injects = {
-        MainActivity.class,
-        TakePictureEventHandler.class,
-        SelectPictureEventHandler.class,
-        ShowPictureEventHandler.class,
-        TakePictureResultHandler.class,
-        SelectPictureResultHandler.class,
-        UnknownResultHandler.class
-} )
+@Module(
+        injects = {
+                MainActivity.class,
+                TakePictureEventHandler.class,
+                SelectPictureEventHandler.class,
+                ShowPictureEventHandler.class,
+                TakePictureResultHandler.class,
+                SelectPictureResultHandler.class,
+                UnknownResultHandler.class
+        },
+        complete = false,
+        library = true)
 public class MainActivityModule {
-    Context mContext;
-
-    public MainActivityModule(Context context) {
-        mContext = context;
+    @Provides
+    @Singleton
+    public MainActivityHelper provideMainActivityHelper(@ForActivity Context context) {
+        return new MainActivityHelper(context);
     }
 
     @Provides
     @Singleton
-    public MainActivityHelper provideMainActivityHelper() {
-        return new MainActivityHelper(mContext);
-    }
-
-    @Provides
-    @Singleton
-    public MediaStoreCompat provideMediaStoreCompat() {
-        return new MediaStoreCompat(mContext, HandlerUtils.getMainHandler());
+    public MediaStoreCompat provideMediaStoreCompat(@ForActivity Context context) {
+        return new MediaStoreCompat(context, HandlerUtils.getMainHandler());
     }
 
     @Provides

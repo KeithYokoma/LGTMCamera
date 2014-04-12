@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.anprosit.android.dagger.utils.ObjectGraphUtils;
+
 import javax.inject.Inject;
 
 import jp.mixi.compatibility.android.provider.MediaStoreCompat;
@@ -28,7 +30,7 @@ public class TakePictureResultHandler implements RequestResultHandler<MainActivi
             return;
         }
 
-        activity.getGraph().inject(this);
+        ObjectGraphUtils.getObjectGraph(activity).inject(this);
         Uri uri = mCompat.getCapturedPhotoUri(data, mPicState.getPreparedUri());
         Intent intent = new Intent(activity, ComposeActivity.class);
         intent.putExtra(ComposeActivity.EXTRA_URI, uri);

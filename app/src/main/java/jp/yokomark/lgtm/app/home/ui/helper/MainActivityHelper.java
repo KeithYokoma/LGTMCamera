@@ -3,6 +3,10 @@ package jp.yokomark.lgtm.app.home.ui.helper;
 import android.content.Context;
 import android.util.Log;
 
+import com.anprosit.android.dagger.annotation.ForActivity;
+
+import javax.inject.Inject;
+
 import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 
 /**
@@ -13,7 +17,8 @@ import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 public class MainActivityHelper extends AbstractActivityHelper {
     public static final String TAG = MainActivityHelper.class.getSimpleName();
 
-    MainActivityHelper(Context context) {
+    @Inject
+    MainActivityHelper(@ForActivity Context context) {
         super(context);
     }
 
