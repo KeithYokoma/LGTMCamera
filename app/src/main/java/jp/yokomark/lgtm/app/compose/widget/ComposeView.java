@@ -31,6 +31,8 @@ import jp.yokomark.lgtm.app.compose.entity.ComposeData;
  */
 public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, Runnable, MoveGestureDetector.OnMoveGestureListener, ScaleGestureDetector.OnScaleGestureListener, RotateGestureDetector.OnRotateGestureListener {
     public static final String TAG = ComposeView.class.getSimpleName();
+    private static final float MAX_TEXT_SIZE = 255.f;
+    private static final float MAX_STROKE_WIDTH = 5.f;
     private final int mTextSize;
     private ComposeData mData;
     private Thread mLooper;
@@ -47,6 +49,7 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
     private float mScaleFactor;
     private float mDegree;
     private Paint mTextPaint;
+    private Paint mTextStrokePaint;
     private Bitmap mBackground;
 
     public ComposeView(Context context, ComposeData data) {
@@ -61,10 +64,14 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
         mScaleFactor = 1.f;
 
         mTextPaint = new Paint();
-        mTextPaint.setTextSize(mTextSize);
-        mTextPaint.setColor(Color.WHITE);
+        mTextPaint.setColor(mData.getTextColor());
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        mTextStrokePaint = new Paint();
+        mTextStrokePaint.setStyle(Paint.Style.STROKE);
+        mTextStrokePaint.setColor(Color.BLACK);
+        mTextStrokePaint.setTypeface(Typeface.DEFAULT_BOLD);
+        mTextStrokePaint.setAntiAlias(true);
     }
 
     @Override
@@ -133,24 +140,19 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
 
     /* package */ void drawText(Canvas canvas) {
         canvas.save();
-        float textSize = mTextSize * mScaleFactor;
         float textX = mTextBaseX + mTextX;
         float textY = mTextBaseY + mTextY;
+        float textSize = Math.min(mTextSize * mScaleFactor, MAX_TEXT_SIZE);
+        float strokeSize = Math.min(0.5f * mScaleFactor, MAX_STROKE_WIDTH);
 
         canvas.rotate(mDegree, textX, textY);
 
-        mTextPaint.setTextSize(textSize < 255.f ? textSize : 255.f);
-        canvas.drawText(mData.getText(), textX, textY, mTextPaint);
+        mTextPaint.setTextSize(textSize);
+        mTextStrokePaint.setTextSize(textSize);
+        mTextStrokePaint.setStrokeWidth(strokeSize);
 
-        float strokeSize = 0.5f * mScaleFactor;
-        Paint strokePaint = new Paint();
-        strokePaint.setStyle(Paint.Style.STROKE);
-        strokePaint.setStrokeWidth(strokeSize < 3.f ? strokeSize : 3.f);
-        strokePaint.setColor(Color.BLACK);
-        strokePaint.setTextSize(textSize < 255.f ? textSize : 255.f);
-        strokePaint.setTypeface(Typeface.DEFAULT_BOLD);
-        strokePaint.setAntiAlias(true);
-        canvas.drawText(mData.getText(), textX, textY, strokePaint);
+        canvas.drawText(mData.getText(), textX, textY, mTextPaint);
+        canvas.drawText(mData.getText(), textX, textY, mTextStrokePaint);
         canvas.restore();
     }
 
@@ -197,4 +199,12 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
 
     @Override
     public void onRotateEnd(RotateGestureDetector detector) {}
+
+    public Bitmap capture() {
+        Bitmap bitmap = Bitmap.createBitmap(mBackground.getWidth(), mBackground.getHeight(), Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(bitmap);
+        drawBackground(canvas);
+        drawText(canvas);
+        return bitmap;
+    }
 }
