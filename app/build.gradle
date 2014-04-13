@@ -1,3 +1,4 @@
+apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
 
 android {
@@ -10,10 +11,27 @@ android {
         versionCode 1
         versionName "1.0.0"
     }
+    signingConfigs {
+        debug {
+        }
+        release {
+        }
+    }
+
     buildTypes {
         release {
-            runProguard false
+            debuggable false
+            zipAlign true
+            runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            versionNameSuffix " (Debug)"
+            debuggable true
+            zipAlign true
+            runProguard false
+            signingConfig signingConfigs.debug
         }
     }
 }
