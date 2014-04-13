@@ -82,7 +82,7 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        if(mLooper != null ) {
+        if(mLooper != null && !mLooper.isAlive()) {
             mWidth = width;
             mHeight = height;
             Paint.FontMetrics metrics = mTextPaint.getFontMetrics();

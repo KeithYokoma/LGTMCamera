@@ -26,7 +26,9 @@
         </activity>
         <activity android:name=".app.preference.ui.PreferenceActivity"/>
         <activity android:name=".app.license.ui.LicenseListActivity"/>
-        <activity android:name=".app.compose.ui.ComposeActivity"/>
+        <activity
+            android:name=".app.compose.ui.ComposeActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".app.history.ui.ComposeHistoryActivity"/>
     </application>
 
