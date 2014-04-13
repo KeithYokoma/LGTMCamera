@@ -6,6 +6,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.amalgam.io.CloseableUtils;
 
@@ -19,23 +20,26 @@ import java.io.IOException;
  * @since 1.0.0
  */
 public final class StorageUtils {
+    public static final String TAG = StorageUtils.class.getSimpleName();
     private StorageUtils() {
         throw new AssertionError();
     }
 
     public static Uri saveImage(Context context, Bitmap bitmap, Bitmap.CompressFormat format, int quality) throws IOException {
-        File dir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "LGTMCamera");
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "LGTMCamera");
         if (!dir.exists()) {
             if (!dir.mkdirs()) {
                 throw new IOException("cannot create temporary dir on the external storage");
             }
         }
         File dest = new File(dir, String.valueOf(System.currentTimeMillis()) + ".jpg");
+        Log.v(TAG, "saving as: " + dest.getAbsolutePath());
         if (!saveAsFile(dest, bitmap, format, quality)) {
             throw new IOException("failed to save bitmap as a file.");
         }
         String url = MediaStore.Images.Media.insertImage(context.getContentResolver(), dest.getAbsolutePath(), "", "");
-        MediaScannerConnection.scanFile(context, new String[] {dir.getAbsolutePath()}, new String[] { "image/jpeg" }, null);
+        Log.v(TAG, "stored at: " + url);
+        MediaScannerConnection.scanFile(context, new String[] {dest.getAbsolutePath()}, new String[] { "image/jpeg" }, null);
         return Uri.parse(url);
     }
 

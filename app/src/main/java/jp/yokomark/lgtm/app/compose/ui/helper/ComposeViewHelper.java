@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.anprosit.android.dagger.annotation.ForActivity;
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.compose.entity.ComposeData;
 import jp.yokomark.lgtm.app.compose.widget.ComposeView;
+import jp.yokomark.lgtm.media.utils.ImageUtils;
 import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 
 /**
@@ -50,6 +52,7 @@ public class ComposeViewHelper extends AbstractActivityHelper {
     }
 
     public void dispatchShare(Uri uri) {
+        Log.v(TAG, ImageUtils.getPath(getContext().getContentResolver(), uri));
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setDataAndType(uri, "image/jpeg");
         intent.putExtra(Intent.EXTRA_TEXT, getContext().getString(R.string.default_lgtm_text));
