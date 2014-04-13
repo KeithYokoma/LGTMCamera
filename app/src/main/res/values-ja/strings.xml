@@ -3,6 +3,7 @@
     <string name="app_name">LGTMCam</string>
 
     <string name="action_settings">設定</string>
+    <string name="action_save">保存</string>
     <string name="button_take_pic">LGTM 写真を撮る</string>
     <string name="button_select_pic">LGTM 写真を選ぶ</string>
     <string name="button_list_pic">LGTM 写真を見る</string>

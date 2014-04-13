@@ -20,6 +20,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+
 import jp.yokomark.lgtm.app.compose.entity.ComposeData;
 
 /**
@@ -63,14 +65,6 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
         mTextPaint.setColor(Color.WHITE);
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
-
-        Paint.FontMetrics metrics = mTextPaint.getFontMetrics();
-        // 文字列の幅を取得
-        float textWidth = mTextPaint.measureText(mData.getText());
-        // 中心にしたいX座標から文字列の幅の半分を引く
-        mTextBaseX = (mWidth / 2) - textWidth / 2;
-        // 中心にしたいY座標からAscentとDescentの半分を引く
-        mTextBaseY = (mHeight / 2) - (metrics.ascent + metrics.descent) / 2;
     }
 
     @Override
@@ -84,6 +78,13 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
         if(mLooper != null ) {
             mWidth = width;
             mHeight = height;
+            Paint.FontMetrics metrics = mTextPaint.getFontMetrics();
+            // 文字列の幅を取得
+            float textWidth = mTextPaint.measureText(mData.getText());
+            // 中心にしたいX座標から文字列の幅の半分を引く
+            mTextBaseX = (mWidth / 2) - textWidth / 2;
+            // 中心にしたいY座標からAscentとDescentの半分を引く
+            mTextBaseY = (mHeight / 2) - (metrics.ascent + metrics.descent) / 2;
             mLooper.start();
         }
     }
@@ -99,7 +100,7 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(@Nonnull MotionEvent event) {
         mScaleDetector.onTouchEvent(event);
         mRotateDetector.onTouchEvent(event);
         mMoveDetector.onTouchEvent(event);
@@ -134,7 +135,7 @@ public class ComposeView extends SurfaceView implements SurfaceHolder.Callback, 
         canvas.save();
         float textSize = mTextSize * mScaleFactor;
         float textX = mTextBaseX + mTextX;
-        float textY = mTextBaseY = mTextY;
+        float textY = mTextBaseY + mTextY;
 
         canvas.rotate(mDegree, textX, textY);
 

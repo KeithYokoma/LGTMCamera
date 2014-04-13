@@ -2,6 +2,8 @@ package jp.yokomark.lgtm.app.compose.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.amalgam.os.BundleUtils;
 import com.anprosit.android.dagger.ActivityModule;
@@ -18,6 +20,7 @@ import jp.yokomark.lgtm.R;
 import jp.yokomark.lgtm.app.compose.model.ComposeStateHolder;
 import jp.yokomark.lgtm.app.compose.ui.helper.ComposeModule;
 import jp.yokomark.lgtm.app.compose.ui.helper.ComposeViewHelper;
+import jp.yokomark.lgtm.app.compose.ui.helper.options.ComposeOptionsMenu;
 
 /**
  * @author yokomakukeishin
@@ -35,15 +38,26 @@ public class ComposeActivity extends DaggerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
         mHolder.onCreate(getIntent().<Uri>getParcelableExtra(EXTRA_URI), savedInstanceState);
-//        mHelper.assignImage(mHolder.getData(), mHolder.getImageViewDimension());
-//        mHelper.assignText(mHolder.getData());
-        mHelper.setSurface(mHolder.getData());
+        mHelper.setUpActionBar();
+        mHelper.setUpComposeView(mHolder.getData());
     }
 
     @Override
     protected void onSaveInstanceState(@Nonnull Bundle outState) {
         mHolder.onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_activity_compose, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        ComposeOptionsMenu menu = ComposeOptionsMenu.valueOf(item);
+        return menu.getHandler().handle(this) || super.onOptionsItemSelected(item);
     }
 
     @Override

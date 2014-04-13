@@ -1,5 +1,6 @@
 package jp.yokomark.lgtm.misc.ui.helper;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -22,6 +23,10 @@ public abstract class AbstractActivityHelper {
 
     protected Activity getActivity() {
         return (Activity) mContext;
+    }
+
+    protected ActionBar getActionBar() {
+        return getActivity().getActionBar();
     }
 
     @SuppressWarnings("unchecked") // We know that all views should be a child of View.

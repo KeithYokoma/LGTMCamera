@@ -48,7 +48,7 @@ public class ComposeData implements Parcelable {
     }
 
     public static ComposeData buildDefault(Context context, Uri uri) {
-        return new ComposeData(uri, context.getString(R.string.default_lgtm_text), 40, Color.BLACK);
+        return new ComposeData(uri, context.getString(R.string.default_lgtm_text), 80, Color.BLACK);
     }
 
     @Override
