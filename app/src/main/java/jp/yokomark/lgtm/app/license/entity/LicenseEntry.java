@@ -1,4 +1,4 @@
-package jp.yokomark.lgtm.app.preference.entity;
+package jp.yokomark.lgtm.app.license.entity;
 
 import android.net.Uri;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import jp.yokomark.lgtm.R;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class LicenseEntry implements Parcelable {
+public class LicenseEntry implements Parcelable, Comparable<LicenseEntry> {
     public static final Creator<LicenseEntry> CREATOR = new Creator<LicenseEntry>() {
         @Override
         public LicenseEntry createFromParcel(Parcel source) {
@@ -47,6 +47,11 @@ public class LicenseEntry implements Parcelable {
     }
 
     @Override
+    public int compareTo(LicenseEntry another) {
+        return mCategory.compareTo(another.getCategory());
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -76,8 +81,9 @@ public class LicenseEntry implements Parcelable {
     }
 
     public static enum Category {
-        APACHE(0L, R.string.label_list_sticky_header_license_apache),
-        MIT(1L,R.string.label_list_sticky_header_license_mit);
+        BSD(0L, R.string.label_list_sticky_header_license_bsd_c2),
+        MIT(1L,R.string.label_list_sticky_header_license_mit),
+        APACHE(2L, R.string.label_list_sticky_header_license_apache);
 
         private final long mId;
         private final int mLabelId;

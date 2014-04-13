@@ -1,4 +1,4 @@
-package jp.yokomark.lgtm.app.preference.ui.helper;
+package jp.yokomark.lgtm.app.license.ui.helper;
 
 import android.content.Context;
 
@@ -8,8 +8,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import jp.yokomark.lgtm.app.preference.ui.LicenseListActivity;
-import jp.yokomark.lgtm.app.preference.ui.LicenseListFragment;
+import jp.yokomark.lgtm.app.license.ui.LicenseListActivity;
+import jp.yokomark.lgtm.app.license.ui.LicenseListFragment;
 
 /**
  * @author yokomakukeishin

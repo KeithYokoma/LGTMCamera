@@ -1,4 +1,4 @@
-package jp.yokomark.lgtm.app.preference.ui;
+package jp.yokomark.lgtm.app.license.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import com.anprosit.android.dagger.ui.DaggerFragment;
 import javax.inject.Inject;
 
 import jp.yokomark.lgtm.R;
-import jp.yokomark.lgtm.app.preference.ui.helper.LicenseListHelper;
+import jp.yokomark.lgtm.app.license.ui.helper.LicenseListHelper;
 
 /**
  * @author yokomakukeishin

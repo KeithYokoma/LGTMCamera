@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 
 import com.anprosit.android.dagger.annotation.ForActivity;
+import com.anprosit.android.dagger.utils.ObjectGraphUtils;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ import jp.yokomark.lgtm.app.history.event.HistoryInvalidatedEvent;
 import jp.yokomark.lgtm.app.history.event.HistoryLoadedEvent;
 import jp.yokomark.lgtm.misc.event.EventBusUtils;
 import jp.yokomark.lgtm.misc.model.AbstractModel;
+import jp.yokomark.lgtm.utils.StorageUtils;
 
 /**
  * @author yokomakukeishin
@@ -26,17 +28,18 @@ import jp.yokomark.lgtm.misc.model.AbstractModel;
 public class ComposeHistoryCollection extends AbstractModel implements LoaderManager.LoaderCallbacks<Cursor> {
     public static final String TAG = ComposeHistoryCollection.class.getSimpleName();
     private static final int LOADER_ID = 1;
-    private static final String BUCKET_ID = "1111";
+    private static final String BUCKET_NAME = StorageUtils.BUCKET_NAME;
     @Inject Bus mBus;
 
     @Inject
     public ComposeHistoryCollection(@ForActivity Context context) {
         super(context);
+        ObjectGraphUtils.getObjectGraph(context).inject(this);
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(getContext(), MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media.BUCKET_ID + " = ?", new String[] {BUCKET_ID}, null);
+        return new CursorLoader(getContext(), MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images.Media.BUCKET_DISPLAY_NAME + " = ?", new String[] {BUCKET_NAME}, null);
     }
 
     @Override

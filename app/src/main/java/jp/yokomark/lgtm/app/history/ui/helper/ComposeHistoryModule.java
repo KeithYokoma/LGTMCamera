@@ -20,7 +20,8 @@ import jp.yokomark.lgtm.app.history.ui.ComposeHistoryActivity;
 @Module(
         injects = {
                 ComposeHistoryActivity.class,
-                ComposeHistoryCollection.class
+                ComposeHistoryCollection.class,
+                ComposeHistoryViewHelper.class
         },
         complete = false,
         library = true)
@@ -29,6 +30,12 @@ public class ComposeHistoryModule {
     @Singleton
     public ComposeHistoryCollection provideComposeHistoryCollection(@ForActivity Context context) {
         return new ComposeHistoryCollection(context);
+    }
+
+    @Provides
+    @Singleton
+    public ComposeHistoryViewHelper provideComposeHistoryViewHelper(@ForActivity Context context) {
+        return new ComposeHistoryViewHelper(context);
     }
 
     @Provides

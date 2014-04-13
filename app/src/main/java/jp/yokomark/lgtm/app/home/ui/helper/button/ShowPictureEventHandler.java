@@ -1,5 +1,8 @@
 package jp.yokomark.lgtm.app.home.ui.helper.button;
 
+import android.content.Intent;
+
+import jp.yokomark.lgtm.app.history.ui.ComposeHistoryActivity;
 import jp.yokomark.lgtm.app.home.ui.MainActivity;
 import jp.yokomark.lgtm.misc.ui.helper.ViewClickEventHandler;
 
@@ -13,6 +16,7 @@ public class ShowPictureEventHandler implements ViewClickEventHandler<MainActivi
 
     @Override
     public void handle(MainActivity activity) {
-
+        Intent intent = new Intent(activity, ComposeHistoryActivity.class);
+        activity.startActivity(intent);
     }
 }

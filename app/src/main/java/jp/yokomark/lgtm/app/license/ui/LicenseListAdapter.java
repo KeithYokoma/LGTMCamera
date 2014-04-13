@@ -1,4 +1,4 @@
-package jp.yokomark.lgtm.app.preference.ui;
+package jp.yokomark.lgtm.app.license.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import jp.yokomark.lgtm.R;
-import jp.yokomark.lgtm.app.preference.entity.LicenseEntry;
-import jp.yokomark.lgtm.app.preference.model.LicenseCollection;
+import jp.yokomark.lgtm.app.license.entity.LicenseEntry;
+import jp.yokomark.lgtm.app.license.model.LicenseCollection;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
@@ -27,17 +27,18 @@ public class LicenseListAdapter extends BaseAdapter implements StickyListHeaders
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mCollection = new LicenseCollection.Builder()
-                .addAsApache(new LicenseEntry("Android-Device-Compatibility", "mixi, Inc.", "https://github.com/mixi-inc/Android-Device-Compatibility", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("Amalgam", "nohana, Inc.", "https://github.com/nohana/Amalgam", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("CompoundContainers", "KeithYokoma", "https://github.com/KeithYokoma/CompoundContainers", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("Dagger", "Square, Inc.", "https://github.com/square/dagger", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("DaggerAndroidHelperLibrary", "hnakagawa", "https://github.com/hnakagawa/dagger-android-helper-library", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("Laevatein", "nohana, Inc.", "https://github.com/nohana/Laevatein", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("Otto", "Square, Inc.", "https://github.com/square/otto", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("Picasso", "Square, Inc.", "https://github.com/square/picasso", LicenseEntry.Category.APACHE))
-                .addAsApache(new LicenseEntry("StickyListHeaders", "Emil Sjölander", "https://github.com/emilsjolander/StickyListHeaders", LicenseEntry.Category.APACHE))
-                .addAsMit(new LicenseEntry("Image View Zoom", "Alessandro Crugnola", "https://github.com/sephiroth74/ImageViewZoom", LicenseEntry.Category.MIT))
-                .addAsMit(new LicenseEntry("Android-Bootstrap", "Bearded Hen", "https://github.com/Bearded-Hen/Android-Bootstrap", LicenseEntry.Category.MIT))
+                .add(new LicenseEntry("Android-Device-Compatibility", "mixi, Inc.", "https://github.com/mixi-inc/Android-Device-Compatibility", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Amalgam", "nohana, Inc.", "https://github.com/nohana/Amalgam", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("CompoundContainers", "KeithYokoma", "https://github.com/KeithYokoma/CompoundContainers", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Dagger", "Square, Inc.", "https://github.com/square/dagger", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("DaggerAndroidHelperLibrary", "hnakagawa", "https://github.com/hnakagawa/dagger-android-helper-library", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Laevatein", "nohana, Inc.", "https://github.com/nohana/Laevatein", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Otto", "Square, Inc.", "https://github.com/square/otto", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Picasso", "Square, Inc.", "https://github.com/square/picasso", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("StickyListHeaders", "Emil Sjölander", "https://github.com/emilsjolander/StickyListHeaders", LicenseEntry.Category.APACHE))
+                .add(new LicenseEntry("Image View Zoom", "Alessandro Crugnola", "https://github.com/sephiroth74/ImageViewZoom", LicenseEntry.Category.MIT))
+                .add(new LicenseEntry("Android-Bootstrap", "Bearded Hen", "https://github.com/Bearded-Hen/Android-Bootstrap", LicenseEntry.Category.MIT))
+                .add(new LicenseEntry("Android Gesture Detectors Framework", "Almeros", "https://github.com/Almeros/android-gesture-detectors", LicenseEntry.Category.BSD))
                 .create();
     }
 

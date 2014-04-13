@@ -21,12 +21,14 @@ import java.io.IOException;
  */
 public final class StorageUtils {
     public static final String TAG = StorageUtils.class.getSimpleName();
+    public static final String BUCKET_NAME = "LGTMCamera";
+
     private StorageUtils() {
         throw new AssertionError();
     }
 
     public static Uri saveImage(Context context, Bitmap bitmap, Bitmap.CompressFormat format, int quality) throws IOException {
-        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "LGTMCamera");
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), BUCKET_NAME);
         if (!dir.exists()) {
             if (!dir.mkdirs()) {
                 throw new IOException("cannot create temporary dir on the external storage");

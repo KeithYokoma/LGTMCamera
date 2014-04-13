@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    </resources>
+    <dimen name="card_history_width">640dp</dimen>
+    <dimen name="card_history_height">360dp</dimen>
+</resources>

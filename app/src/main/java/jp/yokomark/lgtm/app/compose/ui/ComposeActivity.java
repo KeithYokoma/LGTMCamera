@@ -79,6 +79,7 @@ public class ComposeActivity extends DaggerActivity {
 
     @Subscribe
     public void onSaveSuccess(SaveSuccessEvent event) {
+        mHelper.dismissProgress();
         mHelper.dispatchShare(event.getUri());
     }
 }

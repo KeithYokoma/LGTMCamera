@@ -15,9 +15,12 @@
     <string name="label_list_item_license">%1$s by %2$s</string>
     <string name="label_list_sticky_header_license_apache">Licensed under Apache V2 License</string>
     <string name="label_list_sticky_header_license_mit">Licensed under MIT License</string>
+    <string name="label_list_sticky_header_license_bsd_c2">Licensed under 2-clause BSD License</string>
     <string name="label_list_header_license">Many thanks to these OSS projects.</string>
 
     <string name="default_lgtm_text">LGTM!</string>
+
+    <string name="label_progress_save">Saving…</string>
 
     <string name="label_copyright">CopyRight © 2014 KeithYokoma All Rights Reserved.</string>
 </resources>

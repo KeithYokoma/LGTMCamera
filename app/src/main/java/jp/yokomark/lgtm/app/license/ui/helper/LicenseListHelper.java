@@ -1,5 +1,6 @@
-package jp.yokomark.lgtm.app.preference.ui.helper;
+package jp.yokomark.lgtm.app.license.ui.helper;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,8 +12,8 @@ import com.anprosit.android.dagger.annotation.ForActivity;
 import javax.inject.Inject;
 
 import jp.yokomark.lgtm.R;
-import jp.yokomark.lgtm.app.preference.entity.LicenseEntry;
-import jp.yokomark.lgtm.app.preference.ui.LicenseListAdapter;
+import jp.yokomark.lgtm.app.license.entity.LicenseEntry;
+import jp.yokomark.lgtm.app.license.ui.LicenseListAdapter;
 import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -44,5 +45,12 @@ public class LicenseListHelper extends AbstractActivityHelper implements Adapter
         list.addHeaderView(LayoutInflater.from(getContext()).inflate(R.layout.list_header_license, null, false));
         list.setAdapter(new LicenseListAdapter(getContext()));
         list.setOnItemClickListener(this);
+    }
+
+    public void setUpActionBar() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
     }
 }

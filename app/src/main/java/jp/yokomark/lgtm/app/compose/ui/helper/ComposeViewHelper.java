@@ -1,6 +1,8 @@
 package jp.yokomark.lgtm.app.compose.ui.helper;
 
 import android.app.ActionBar;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +10,8 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import com.amalgam.app.ProgressDialogFragment;
+import com.amalgam.os.HandlerUtils;
 import com.anprosit.android.dagger.annotation.ForActivity;
 
 import javax.inject.Inject;
@@ -51,6 +55,19 @@ public class ComposeViewHelper extends AbstractActivityHelper {
         return composeView.capture();
     }
 
+    public void dismissProgress() {
+        HandlerUtils.postOnMain(new Runnable() {
+            @Override
+            public void run() {
+                FragmentManager manager = getActivity().getFragmentManager();
+                DialogFragment dialog = (DialogFragment) manager.findFragmentByTag(ProgressDialogFragment.TAG);
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+
     public void dispatchShare(Uri uri) {
         Log.v(TAG, ImageUtils.getPath(getContext().getContentResolver(), uri));
         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -58,5 +75,6 @@ public class ComposeViewHelper extends AbstractActivityHelper {
         intent.putExtra(Intent.EXTRA_TEXT, getContext().getString(R.string.default_lgtm_text));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         getContext().startActivity(intent);
+        getActivity().finish();
     }
 }

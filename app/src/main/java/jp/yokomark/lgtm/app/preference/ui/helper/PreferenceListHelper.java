@@ -12,7 +12,7 @@ import com.anprosit.android.dagger.annotation.ForActivity;
 import javax.inject.Inject;
 
 import jp.yokomark.lgtm.R;
-import jp.yokomark.lgtm.app.preference.ui.LicenseListActivity;
+import jp.yokomark.lgtm.app.license.ui.LicenseListActivity;
 import jp.yokomark.lgtm.misc.ui.helper.AbstractActivityHelper;
 
 /**
