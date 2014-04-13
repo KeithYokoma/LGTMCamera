@@ -1,6 +1,9 @@
 apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
 
+Properties props = new Properties()
+props.load(new FileInputStream(file("conf/keystore.properties")))
+
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.3"
@@ -15,6 +18,10 @@ android {
         debug {
         }
         release {
+            storeFile file(props['STORE_PATH'])
+            storePassword props['STORE_PASSWORD']
+            keyAlias props['KEY_ALIAS']
+            keyPassword props['KEY_PASSWORD']
         }
     }
 
@@ -22,7 +29,7 @@ android {
         release {
             debuggable false
             zipAlign true
-            runProguard true
+            runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
         }
