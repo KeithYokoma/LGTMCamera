@@ -21,6 +21,7 @@ android {
 dependencies {
     compile project(':AndroidBootstrap')
     compile project(':DaggerAndroidHelperLibrary')
+    compile project(':GestureDetectors')
     compile 'jp.mixi.compatibility:AndroidDeviceCompatibility:0.2.0'
     compile 'com.squareup.dagger:dagger:1.2.+'
     compile 'com.squareup:otto:1.3.+'

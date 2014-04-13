@@ -22,7 +22,7 @@
 	        android:ellipsize="none"
 	        android:gravity="center"
 	        android:maxLines="1"
-	        android:textSize="100sp" 
+	        android:textSize="100sp"
 	        android:textColor="@color/bthumbnail_font"/>
 
         

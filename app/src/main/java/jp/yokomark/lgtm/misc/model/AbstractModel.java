@@ -2,6 +2,7 @@ package jp.yokomark.lgtm.misc.model;
 
 import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.ContentResolver;
 import android.content.Context;
 
 /**
@@ -22,5 +23,9 @@ public abstract class AbstractModel {
 
     protected LoaderManager getLoaderManager() {
         return ((Activity) mContext).getLoaderManager();
+    }
+
+    protected ContentResolver getContentResolver() {
+        return mContext.getContentResolver();
     }
 }

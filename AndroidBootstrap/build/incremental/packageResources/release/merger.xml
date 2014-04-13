@@ -288,17 +288,17 @@
                 qualifiers="" >
                 <color name="bbutton_success" >#ff5cb85c
                 </color>
-                <color name="bbutton_warning_edge" >#ffeea236
-                </color>
-                <color name="bbutton_inverse_edge" >#ff141414
+                <color name="bbutton_default_pressed" >#ffebebeb
                 </color>
                 <color name="bbutton_default_disabled_edge" >#a5cccccc
                 </color>
-                <color name="bbutton_default_pressed" >#ffebebeb
+                <color name="bbutton_inverse_edge" >#ff141414
                 </color>
-                <color name="bbutton_danger" >#ffd9534f
+                <color name="bbutton_warning_edge" >#ffeea236
                 </color>
                 <color name="bbutton_success_pressed" >#ff47a447
+                </color>
+                <color name="bbutton_danger" >#ffd9534f
                 </color>
                 <color name="bbutton_inverse_pressed_edge" >#ff292929
                 </color>
@@ -334,17 +334,17 @@
                 </color>
                 <color name="bbutton_info_disabled" >#a55bc0de
                 </color>
-                <color name="bbutton_inverse_disabled_edge" >#a5141414
+                <color name="black" >#ff000000
                 </color>
                 <color name="bbutton_warning" >#fff0ad4e
                 </color>
-                <color name="black" >#ff000000
+                <color name="bbutton_inverse_disabled_edge" >#a5141414
                 </color>
                 <color name="bbutton_edittext_disabled" >#ffe0e0e0
                 </color>
-                <color name="bbutton_danger_pressed_edge" >#ffac2925
-                </color>
                 <color name="bbutton_danger_pressed" >#ffd2322d
+                </color>
+                <color name="bbutton_danger_pressed_edge" >#ffac2925
                 </color>
                 <color name="bbutton_default_disabled" >#a5ffffff
                 </color>
@@ -352,9 +352,9 @@
                 </color>
                 <color name="bthumbnail_placeholder" >#e9e9e9
                 </color>
-                <color name="bthumbnail_border" >#dbdbdb
-                </color>
                 <color name="bbutton_default_edge" >#ffcccccc
+                </color>
+                <color name="bthumbnail_border" >#dbdbdb
                 </color>
                 <color name="bbutton_warning_disabled_edge" >#a5eea236
                 </color>
@@ -370,11 +370,11 @@
                 </color>
                 <color name="bbutton_success_disabled" >#a55cb85c
                 </color>
-                <color name="white" >#ffffffff
+                <color name="bbutton_success_edge" >#ff4cae4c
                 </color>
                 <color name="bbutton_danger_disabled_edge" >#a5d43f3a
                 </color>
-                <color name="bbutton_success_edge" >#ff4cae4c
+                <color name="white" >#ffffffff
                 </color>
                 <color name="bbutton_edittext_border" >#ccc
                 </color>
@@ -398,9 +398,9 @@
                 </dimen>
                 <dimen name="bthumbnail_rounded_corner_radius" >3dp
                 </dimen>
-                <dimen name="bbuton_rounded_corner_radius" >5dp
-                </dimen>
                 <dimen name="padding_small" >8dp
+                </dimen>
+                <dimen name="bbuton_rounded_corner_radius" >5dp
                 </dimen>
                 <dimen name="activity_vertical_margin" >16dp
                 </dimen>

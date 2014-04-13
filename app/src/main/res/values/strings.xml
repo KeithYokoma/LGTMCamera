@@ -16,5 +16,7 @@
     <string name="label_list_sticky_header_license_mit">Licensed under MIT License</string>
     <string name="label_list_header_license">Many thanks to these OSS projects.</string>
 
+    <string name="default_lgtm_text">LGTM!</string>
+
     <string name="label_copyright">CopyRight © 2014 KeithYokoma All Rights Reserved.</string>
 </resources>
